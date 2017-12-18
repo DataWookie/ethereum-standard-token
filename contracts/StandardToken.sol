@@ -6,14 +6,12 @@ contract StandardToken is Token {
     uint256 constant MAX_UINT256 = 2**256 - 1;
 
     string public name;
-    uint8 public decimals;
     string public symbol;
 
-     function StandardToken(uint256 _initialAmount, string _tokenName, uint8 _decimalUnits, string _tokenSymbol) public {
+     function StandardToken(uint256 _initialAmount, string _tokenName, string _tokenSymbol) public {
         balances[msg.sender] = _initialAmount;               // Give the creator all initial tokens
         totalSupply = _initialAmount;                        // Update total supply
         name = _tokenName;                                   // Set the name for display purposes
-        decimals = _decimalUnits;                            // Amount of decimals for display purposes
         symbol = _tokenSymbol;                               // Set the symbol for display purposes
     }
 
