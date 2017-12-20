@@ -57,4 +57,16 @@ contract('StandardToken', function(accounts) {
 			assert.equal(result.toNumber(), 2000, 'accounts[2] balance is wrong');
 		})
 	});
+	//
+	// This is probably not an appropriate test for an event!
+	//
+	it("transfer event", function() {
+		var standard_token;
+		return StandardToken.deployed().then(function(instance){
+			standard_token = instance;
+			return standard_token.transfer(web3.eth.accounts[1], 1000);
+		}).then(function(result){
+			assert.equal(result.logs[0].event, 'Transfer', 'event not correct');
+		})
+	});
 });
